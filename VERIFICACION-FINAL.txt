@@ -1,0 +1,19 @@
+VERIFICACION FINAL - NoiseCut Studio con pistas de audio
+
+Verificado en este equipo:
+- python -m py_compile noisecut.py test_engine.py make_icon.py: sin errores de sintaxis.
+- python test_engine.py: pasan las comprobaciones estaticas del motor y de las cadenas de filtros.
+- test_engine.py contiene solo caracteres ASCII.
+- La prueba de interfaz en modo sin pantalla pudo crear y cerrar la ventana principal con PySide6.
+- La prueba detecta correctamente que no hay FFmpeg y muestra: SKIPPED: FFmpeg integration tests (not installed).
+- El test incluye integraciones para video de 10 s con musica de 40 s, ducking, fundidos, -6 dB y pico final.
+- El proyecto contiene pistas por rol, controles de pista, forma de onda, ajuste al video, bucle, ducking, autosalvado y guardado de proyecto.
+
+No pude verificar:
+- Las integraciones de test_engine.py con FFmpeg/FFprobe real, porque FFmpeg no esta instalado en este equipo.
+- Que la exportacion de 10 s, el ducking de al menos 6 dB, fundidos por debajo de -40 dB y pico maximo de -1 dBFS se cumplan al ejecutar FFmpeg. Las pruebas estan escritas, pero no se ejecutaron.
+- La disponibilidad de filtros opcionales en una compilacion externa, la escucha subjetiva de la mezcla y la reproduccion de audio sincronizada en la vista previa.
+- La compilacion del EXE y la ejecucion de GitHub Actions.
+- La edicion interactiva completa, la recuperacion tras un cierre inesperado ni el guardado y reapertura de un proyecto real.
+
+Para comprobar las integraciones, instala FFmpeg y FFprobe y ejecuta python test_engine.py; GitHub Actions tambien instala una build de FFmpeg para Windows antes de probar y empaquetar.
